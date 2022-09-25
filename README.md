@@ -1,4 +1,4 @@
-# wpm-products
+# WPM Products WordPress Plugin
 
 This is a WordPress plugin.
 
