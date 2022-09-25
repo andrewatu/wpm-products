@@ -126,7 +126,7 @@ class WPMProducts extends Widget_Base {
 			'showonly',
 			[
 				'type' => \Elementor\Controls_Manager::SELECT,
-				'label' => esc_html__( 'Show only products:', 'elementor-wpm-products' ),
+				'label' => esc_html__( 'Which products?', 'elementor-wpm-products' ),
 				'options' => [
 					'onsale' => esc_html__( 'On sale', 'elementor-wpm-products' ),
 					'toprated' => esc_html__( 'Top rated', 'elementor-wpm-products' ),
@@ -219,7 +219,7 @@ class WPMProducts extends Widget_Base {
 			'paginate',
 			[
 				'type' => \Elementor\Controls_Manager::SELECT,
-				'label' => esc_html__( 'Would you like pages?', 'elementor-wpm-products' ),
+				'label' => esc_html__( 'Show pages:', 'elementor-wpm-products' ),
 				'options' => [
 					'yes' => esc_html__( 'Yes', 'elementor-wpm-products' ),
 					'no' => esc_html__( 'No', 'elementor-wpm-products' ),
@@ -235,7 +235,7 @@ class WPMProducts extends Widget_Base {
 		$this->start_controls_section(
 			'filter_section',
 			array(
-				'label' => __( 'Filtering products', 'elementor-wpm-products' ),
+				'label' => __( 'More filters', 'elementor-wpm-products' ),
 				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
 			)
 		);
@@ -244,7 +244,7 @@ class WPMProducts extends Widget_Base {
 			'skus',
 			[
 				'type' => \Elementor\Controls_Manager::TEXTAREA,
-				'label' => esc_html__( 'Only show these SKUs:', 'elementor-wpm-products' ),
+				'label' => esc_html__( 'Only show products with these SKUs:', 'elementor-wpm-products' ),
 				'placeholder' => esc_html__( 'For example: SKU1, SKU2, SKU3', 'elementor-wpm-products' ),
 				'default' => '',
 			]
@@ -254,7 +254,7 @@ class WPMProducts extends Widget_Base {
 			'category',
 			[
 				'type' => \Elementor\Controls_Manager::TEXTAREA,
-				'label' => esc_html__( 'Only show products from these categories:', 'elementor-wpm-products' ),
+				'label' => esc_html__( 'Only show products from categories:', 'elementor-wpm-products' ),
 				'placeholder' => esc_html__( 'For example: men, women, kids', 'elementor-wpm-products' ),
 				'default' => '',
 			]
@@ -264,7 +264,7 @@ class WPMProducts extends Widget_Base {
 			'tag',
 			[
 				'type' => \Elementor\Controls_Manager::TEXTAREA,
-				'label' => esc_html__( 'Only show products with these tags:', 'elementor-wpm-products' ),
+				'label' => esc_html__( 'Only show products with tags:', 'elementor-wpm-products' ),
 				'placeholder' => esc_html__( 'For example: summer, winter, fall', 'elementor-wpm-products' ),
 				'default' => '',
 			]

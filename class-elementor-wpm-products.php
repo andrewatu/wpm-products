@@ -146,23 +146,13 @@ final class Elementor_WPM_Products {
 	 * @since 1.0.0
 	 * @access public
 	 */
+
 	public function admin_notice_missing_main_plugin() {
 		deactivate_plugins( plugin_basename( Elementor_WPM_Products ) );
+		$class = 'notice notice-error is-dismissible';
+		$message = __( 'WPM Products requires Elementor to be installed and activated.', 'elementor-wpm-products' );
 
-		return sprintf(
-			wp_kses(
-				'<div class="notice notice-warning is-dismissible"><p><strong>"%1$s"</strong> requires <strong>"%2$s"</strong> to be installed and activated.</p></div>',
-				array(
-					'div' => array(
-						'class'  => array(),
-						'p'      => array(),
-						'strong' => array(),
-					),
-				)
-			),
-			'WPM Products',
-			'Elementor'
-		);
+		printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), esc_html( $message ) );
 	}
 
 	/**
@@ -175,22 +165,10 @@ final class Elementor_WPM_Products {
 	 */
 	public function admin_notice_minimum_elementor_version() {
 		deactivate_plugins( plugin_basename( Elementor_WPM_Products ) );
+		$class = 'notice notice-error is-dismissible';
+		$message = __( 'WPM Products requires Elementor version ' . MINIMUM_ELEMENTOR_VERSION . ' or greater.', 'elementor-wpm-products' );
 
-		return sprintf(
-			wp_kses(
-				'<div class="notice notice-warning is-dismissible"><p><strong>"%1$s"</strong> requires <strong>"%2$s"</strong> version %3$s or greater.</p></div>',
-				array(
-					'div' => array(
-						'class'  => array(),
-						'p'      => array(),
-						'strong' => array(),
-					),
-				)
-			),
-			'WPM Products',
-			'Elementor',
-			self::MINIMUM_ELEMENTOR_VERSION
-		);
+		printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), esc_html( $message ) );
 	}
 
 	/**
@@ -203,21 +181,10 @@ final class Elementor_WPM_Products {
 	 */
 	public function admin_notice_missing_woocommerce() {
 		deactivate_plugins( plugin_basename( Elementor_WPM_Products ) );
+		$class = 'notice notice-error is-dismissible';
+		$message = __( 'WPM Products requires WooCommerce to be installed and activated.', 'elementor-wpm-products' );
 
-		return sprintf(
-			wp_kses(
-				'<div class="notice notice-warning is-dismissible"><p><strong>"%1$s"</strong> requires <strong>"%2$s"</strong> to be installed and activated.</p></div>',
-				array(
-					'div' => array(
-						'class'  => array(),
-						'p'      => array(),
-						'strong' => array(),
-					),
-				)
-			),
-			'WPM Products',
-			'WooCommerce'
-		);
+		printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), esc_html( $message ) );
 	}
 
 	/**
@@ -230,22 +197,10 @@ final class Elementor_WPM_Products {
 	 */
 	public function admin_notice_minimum_woocommerce_version() {
 		deactivate_plugins( plugin_basename( Elementor_WPM_Products ) );
+		$class = 'notice notice-error is-dismissible';
+		$message = __( 'WPM Products requires WooCommerce version ' . MINIMUM_WOOCOMMERCE_VERSION . ' or greater.', 'elementor-wpm-products' );
 
-		return sprintf(
-			wp_kses(
-				'<div class="notice notice-warning is-dismissible"><p><strong>"%1$s"</strong> requires <strong>"%2$s"</strong> version %3$s or greater.</p></div>',
-				array(
-					'div' => array(
-						'class'  => array(),
-						'p'      => array(),
-						'strong' => array(),
-					),
-				)
-			),
-			'WPM Products',
-			'WooCommerce',
-			self::MINIMUM_WOOCOMMERCE_VERSION
-		);
+		printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), esc_html( $message ) );
 	}
 
 	/**
@@ -258,22 +213,10 @@ final class Elementor_WPM_Products {
 	 */
 	public function admin_notice_minimum_php_version() {
 		deactivate_plugins( plugin_basename( Elementor_WPM_Products ) );
+		$class = 'notice notice-error is-dismissible';
+		$message = __( 'WPM Products requires PHP version ' . MINIMUM_PHP_VERSION . ' or greater.', 'elementor-wpm-products' );
 
-		return sprintf(
-			wp_kses(
-				'<div class="notice notice-warning is-dismissible"><p><strong>"%1$s"</strong> requires <strong>"%2$s"</strong> version %3$s or greater.</p></div>',
-				array(
-					'div' => array(
-						'class'  => array(),
-						'p'      => array(),
-						'strong' => array(),
-					),
-				)
-			),
-			'WPM Products',
-			'PHP',
-			self::MINIMUM_PHP_VERSION
-		);
+		printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), esc_html( $message ) );
 	}
 }
 
