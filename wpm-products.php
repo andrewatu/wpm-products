@@ -4,7 +4,7 @@
  *
  * @package ElementorWPMProducts
  *
- * Plugin Name: Woo Products
+ * Plugin Name: WPM Products by WP Maker
  * Description: Adds the "WPM Products" widget to Elementor, a super easy way to add any WooCommerce products to any Elementor page.
  * Plugin URI:  https://www.youtube.com/channel/UClGhdRdiwZbdFqAWMVirG8g
  * Version:     1.0.0
