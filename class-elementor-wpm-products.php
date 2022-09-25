@@ -93,8 +93,8 @@ final class Elementor_WPM_Products {
 	/**
 	 * Initialize the plugin
 	 *
-	 * Validates that Elementor is already loaded.
-	 * Checks for basic plugin requirements, if one check fail don't continue,
+	 * Validates that Elementor & WooCommerce are already loaded (and their versions), as well as the required PHP version.
+	 * Checks for basic plugin requirements, if one check fails don't continue,
 	 * if all check have passed include the plugin class.
 	 *
 	 * Fired by `plugins_loaded` action hook.
@@ -113,6 +113,18 @@ final class Elementor_WPM_Products {
 		// Check for required Elementor version.
 		if ( ! version_compare( ELEMENTOR_VERSION, self::MINIMUM_ELEMENTOR_VERSION, '>=' ) ) {
 			add_action( 'admin_notices', array( $this, 'admin_notice_minimum_elementor_version' ) );
+			return;
+		}
+
+		// Check if WooCommerce installed and activated.
+		if ( ! in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
+			add_action( 'admin_notices', array( $this, 'admin_notice_missing_woocommerce' ) );
+			return;
+		}
+
+		// WooCommerce is active, now check for required WooCommerce version.
+		if ( ! version_compare( WC_VERSION, self::MINIMUM_WOOCOMMERCE_VERSION, '>=' ) ) {
+			add_action( 'admin_notices', array( $this, 'admin_notice_minimum_woocommerce_version' ) );
 			return;
 		}
 
@@ -184,6 +196,61 @@ final class Elementor_WPM_Products {
 	/**
 	 * Admin notice
 	 *
+	 * Warning when the site doesn't have WooCommerce installed or activated.
+	 *
+	 * @since 1.0.0
+	 * @access public
+	 */
+	public function admin_notice_missing_woocommerce() {
+		deactivate_plugins( plugin_basename( Elementor_WPM_Products ) );
+
+		return sprintf(
+			wp_kses(
+				'<div class="notice notice-warning is-dismissible"><p><strong>"%1$s"</strong> requires <strong>"%2$s"</strong> to be installed and activated.</p></div>',
+				array(
+					'div' => array(
+						'class'  => array(),
+						'p'      => array(),
+						'strong' => array(),
+					),
+				)
+			),
+			'WPM Products',
+			'WooCommerce'
+		);
+	}
+
+	/**
+	 * Admin notice
+	 *
+	 * Warning when the site doesn't have a minimum required WooCommerce version.
+	 *
+	 * @since 1.0.0
+	 * @access public
+	 */
+	public function admin_notice_minimum_woocommerce_version() {
+		deactivate_plugins( plugin_basename( Elementor_WPM_Products ) );
+
+		return sprintf(
+			wp_kses(
+				'<div class="notice notice-warning is-dismissible"><p><strong>"%1$s"</strong> requires <strong>"%2$s"</strong> version %3$s or greater.</p></div>',
+				array(
+					'div' => array(
+						'class'  => array(),
+						'p'      => array(),
+						'strong' => array(),
+					),
+				)
+			),
+			'WPM Products',
+			'WooCommerce',
+			self::MINIMUM_WOOCOMMERCE_VERSION
+		);
+	}
+
+	/**
+	 * Admin notice
+	 *
 	 * Warning when the site doesn't have a minimum required PHP version.
 	 *
 	 * @since 1.0.0
@@ -204,8 +271,8 @@ final class Elementor_WPM_Products {
 				)
 			),
 			'WPM Products',
-			'Elementor',
-			self::MINIMUM_ELEMENTOR_VERSION
+			'PHP',
+			self::MINIMUM_PHP_VERSION
 		);
 	}
 }
