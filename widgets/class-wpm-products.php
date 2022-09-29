@@ -37,7 +37,7 @@ class WPMProducts extends Widget_Base {
 	public function __construct( $data = array(), $args = null ) {
 		parent::__construct( $data, $args );
 
-		wp_register_style( 'wpmproducts', plugins_url( '/assets/css/wpm-products.css', Elementor_WPM_Products ), array(), '1.0.4' );
+		wp_register_style( 'wpmproducts', plugins_url( '/assets/css/wpm-products.css', Elementor_WPM_Products ), array(), '1.0.0' );
 	}
 
 	/**
