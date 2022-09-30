@@ -136,6 +136,8 @@ final class Elementor_WPM_Products {
 
 		// Once we get here, We have passed all validation checks so we can safely include our widgets.
 		require_once 'class-widgets.php';
+		// And also our Product Options
+		require_once 'class-wpm-product-options.php';
 	}
 
 	/**
