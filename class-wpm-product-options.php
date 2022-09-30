@@ -81,7 +81,7 @@ class wpm_product_options {
 		add_theme_page(
 			'WPM Product Options', // page_title
 			'WPM Options', // menu_title
-			'customize', // capability
+			'manage_options', // capability
 			'wpm-product-options', // menu_slug
 			array( $this, 'wpm_product_options_create_admin_page' ) // function
 		);
