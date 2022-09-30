@@ -65,6 +65,7 @@ class wpm_product_options {
 	 */
 	public function __construct() {
 
+		add_action( 'admin_head', array( $this, 'wpm_admin_css' ) );
 		add_action( 'admin_menu', array( $this, 'wpm_product_options_add_plugin_page' ) );
 		add_action( 'admin_init', array( $this, 'wpm_product_options_page_init' ) );
 
@@ -79,7 +80,7 @@ class wpm_product_options {
 	public function wpm_product_options_add_plugin_page() {
 		add_theme_page(
 			'WPM Product Options', // page_title
-			'WPM Product Options', // menu_title
+			'WPM Options', // menu_title
 			'customize', // capability
 			'wpm-product-options', // menu_slug
 			array( $this, 'wpm_product_options_create_admin_page' ) // function
@@ -90,8 +91,8 @@ class wpm_product_options {
 		$this->wpm_product_options_options = get_option( 'wpm_product_options_option_name' ); ?>
 
 		<div class="wrap">
-			<h2>WPM Product Options</h2>
-			<p>Please select your preferences for your Store's appearance.</p>
+			<h2>WP Maker Options</h2>
+			<p>Please select your Store Appearance preferences below.</p>
 			<?php settings_errors(); ?>
 
 			<form method="post" action="options.php">
@@ -113,7 +114,7 @@ class wpm_product_options {
 
 		add_settings_section(
 			'wpm_product_options_setting_section', // id
-			'Settings', // title
+			'', // title
 			array( $this, 'wpm_product_options_section_info' ), // callback
 			'wpm-product-options-admin' // page
 		);
@@ -589,6 +590,16 @@ class wpm_product_options {
 		}
 
 		return $default;
+	}
+
+
+	// Admin CSS
+	function wpm_admin_css() {
+		echo '<style>
+			.form-table th {
+				width: 300px;
+			}
+		</style>';
 	}
 
 
